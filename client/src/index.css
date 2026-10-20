@@ -402,6 +402,44 @@ main { display: block; }
   .floating-channels { min-height: 34px; padding: 0 8px; font-size: 6px; }
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes title-levitation {
+    0%, 100% { transform: translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg); }
+    38% { transform: translate3d(0, -6px, 14px) rotateX(.7deg) rotateY(-.4deg); }
+    68% { transform: translate3d(0, -2px, 5px) rotateX(-.25deg) rotateY(.25deg); }
+  }
+
+  .hero-content,
+  .essence-heading,
+  .gallery-intro,
+  .experience-content,
+  .platforms-intro,
+  .contact-main { perspective: 1200px; }
+
+  .hero h1,
+  .essence-heading h2,
+  .gallery-intro h2,
+  .experience-content h2,
+  .platforms-intro h2,
+  .contact-main h2 {
+    animation: title-levitation 9.2s cubic-bezier(.45, .05, .55, .95) infinite;
+    transform-origin: 50% 58%;
+    transform-style: preserve-3d;
+  }
+
+  .essence-heading h2 { animation-delay: -2.4s; }
+  .gallery-intro h2 { animation-delay: -4.1s; }
+  .experience-content h2 { animation-delay: -1.6s; }
+  .platforms-intro h2 { animation-delay: -5.2s; }
+  .contact-main h2 { animation-delay: -3.3s; }
+
+  .motion-ready .essence-heading:not(.is-visible) h2,
+  .motion-ready .gallery-intro:not(.is-visible) h2,
+  .motion-ready .experience-content:not(.is-visible) h2,
+  .motion-ready .platforms-intro:not(.is-visible) h2,
+  .motion-ready .contact-main:not(.is-visible) h2 { animation-play-state: paused; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .motion-ready [data-reveal]:not(.is-visible) { opacity: 1; transform: none; }
