@@ -15,8 +15,8 @@
   --muted: #aaa39a;
   --line: rgba(212, 175, 55, .25);
   --line-light: rgba(242, 237, 228, .16);
-  --serif: 'Cormorant Garamond', 'Times New Roman', serif;
-  --sans: 'Manrope', 'Helvetica Neue', sans-serif;
+  --serif: 'Newsreader', 'Palatino Linotype', 'Times New Roman', serif;
+  --sans: 'Jost', 'Helvetica Neue', Arial, sans-serif;
   --space: clamp(1.25rem, 5.3vw, 6rem);
   --section-space: clamp(5.5rem, 11vw, 11rem);
   --content-width: 1440px;
@@ -116,8 +116,8 @@ main { display: block; }
 .eyebrow { display: flex; align-items: center; gap: 11px; margin: 0 0 24px; color: var(--gold-soft); font-size: 9px; font-weight: 600; letter-spacing: .2em; line-height: 1.5; text-transform: uppercase; }
 .eyebrow-line { display: inline-block; width: 35px; height: 1px; background: var(--gold); }
 .eyebrow-dot { display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: var(--wine-bright); box-shadow: 0 0 12px rgba(163, 38, 29, .8); }
-.hero h1, .essence h2, .gallery-intro h2, .experience-content h2, .platforms-intro h2, .contact-main h2 { margin: 0; font-family: var(--serif); font-weight: 400; letter-spacing: -.04em; }
-.hero h1 { max-width: 790px; font-size: clamp(4.4rem, 9vw, 9.2rem); line-height: .79; }
+.hero h1, .essence h2, .gallery-intro h2, .experience-content h2, .platforms-intro h2, .contact-main h2 { margin: 0; font-family: var(--serif); font-weight: 400; letter-spacing: -.025em; font-optical-sizing: auto; text-wrap: balance; }
+.hero h1 { max-width: 790px; font-size: clamp(4.4rem, 9vw, 9.2rem); line-height: .88; }
 .hero h1 span, .hero h1 em { display: block; }
 .hero h1 em, .essence h2 em, .gallery-intro h2 em, .experience-content h2 em, .platforms-intro h2 em, .contact-main h2 em { color: var(--gold); font-weight: 400; }
 .hero h1 em { margin: .1em 0 0 .28em; font-size: .79em; }
@@ -405,8 +405,8 @@ main { display: block; }
 @media (prefers-reduced-motion: no-preference) {
   @keyframes title-levitation {
     0%, 100% { transform: translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg); }
-    38% { transform: translate3d(0, -6px, 14px) rotateX(.7deg) rotateY(-.4deg); }
-    68% { transform: translate3d(0, -2px, 5px) rotateX(-.25deg) rotateY(.25deg); }
+    36% { transform: translate3d(0, -16px, 36px) rotateX(1.25deg) rotateY(-.9deg); }
+    68% { transform: translate3d(0, -3px, 8px) rotateX(-.45deg) rotateY(.5deg); }
   }
 
   .hero-content,
@@ -414,7 +414,7 @@ main { display: block; }
   .gallery-intro,
   .experience-content,
   .platforms-intro,
-  .contact-main { perspective: 1200px; }
+  .contact-main { perspective: 950px; }
 
   .hero h1,
   .essence-heading h2,
@@ -422,7 +422,7 @@ main { display: block; }
   .experience-content h2,
   .platforms-intro h2,
   .contact-main h2 {
-    animation: title-levitation 9.2s cubic-bezier(.45, .05, .55, .95) infinite;
+    animation: title-levitation 8.4s cubic-bezier(.45, .05, .55, .95) infinite;
     transform-origin: 50% 58%;
     transform-style: preserve-3d;
   }
@@ -433,14 +433,105 @@ main { display: block; }
   .platforms-intro h2 { animation-delay: -5.2s; }
   .contact-main h2 { animation-delay: -3.3s; }
 
-  .motion-ready .essence-heading:not(.is-visible) h2,
-  .motion-ready .gallery-intro:not(.is-visible) h2,
-  .motion-ready .experience-content:not(.is-visible) h2,
-  .motion-ready .platforms-intro:not(.is-visible) h2,
-  .motion-ready .contact-main:not(.is-visible) h2 { animation-play-state: paused; }
+  .motion-ready .hero h1:not(.is-in-view),
+  .motion-ready .essence-heading h2:not(.is-in-view),
+  .motion-ready .gallery-intro h2:not(.is-in-view),
+  .motion-ready .experience-content h2:not(.is-in-view),
+  .motion-ready .platforms-intro h2:not(.is-in-view),
+  .motion-ready .contact-main h2:not(.is-in-view) { animation-play-state: paused; }
+}
+
+/* Escala editorial e legibilidade */
+body { font-size: 16px; line-height: 1.65; }
+.hero h1, .essence-heading h2, .gallery-intro h2, .experience-content h2, .platforms-intro h2, .contact-main h2 { line-height: .88; }
+.experience-content h2 { line-height: .86; }
+.wordmark-name, .footer-brand { font-size: 11px; }
+.primary-navigation a { font-size: 11px; letter-spacing: .1em; }
+.nav-contact, .menu-toggle { min-height: 44px; }
+.hero-topline { font-size: 9px; letter-spacing: .16em; }
+.eyebrow, .text-cta, .section-overline, .hero-scroll, .underlined-link, .placeholder-caption, .gallery-image-index, .gallery-image-open, .gallery-footnote, .dialog-close, .experience-note, .experience-bottom, .channel-status, .platforms-note, .contact-placeholder small, .contact-secondary, .footer-top, .floating-channels { font-size: 10px; line-height: 1.55; }
+.eyebrow { letter-spacing: .15em; }
+.signature-caption { font-size: 8px; letter-spacing: .18em; }
+.hero-subtitle, .essence-copy p, .experience-aside p, .contact-description { font-size: 15px; line-height: 1.8; }
+.essence-copy p { font-size: clamp(15px, 1.15vw, 17px); }
+.gallery-intro-note { font-size: 13px; line-height: 1.75; }
+.gallery-footnote { color: rgba(242, 237, 228, .62); letter-spacing: .05em; }
+.experience-note { color: rgba(242, 237, 228, .62); }
+.platforms-note, .channel-status { color: rgba(23, 17, 15, .72); }
+.contact-description { color: rgba(242, 237, 228, .78); }
+.contact-placeholder b { font-size: 11px; }
+.contact-placeholder small { color: rgba(242, 237, 228, .66); letter-spacing: .04em; }
+.contact-stamp small { font-size: 8px; letter-spacing: .12em; }
+.footer-note { color: rgba(242, 237, 228, .66); }
+.floating-channels { min-height: 44px; }
+.floating-whatsapp-label { font-size: 10px; }
+.floating-whatsapp-label i { font-size: 9px; }
+.dialog-close { min-height: 44px; align-items: center; }
+
+@media (max-width: 720px) {
+  .wordmark-name { font-size: 10px; }
+  .menu-toggle, .primary-navigation a { font-size: 10px; }
+  .hero .eyebrow, .contact-main .eyebrow { font-size: 10px; letter-spacing: .1em; }
+  .hero-subtitle { max-width: 320px; font-size: 14px; line-height: 1.75; }
+  .hero-scroll, .section-overline, .essence-foot, .experience-bottom { font-size: 9px; }
+  .essence-foot { letter-spacing: .09em; }
+  .placeholder-caption { font-size: 9px; letter-spacing: .06em; }
+  .gallery-footnote { max-width: 92%; font-size: 9px; }
+  .experience-aside p { font-size: 14px; }
+  .channel-status { max-width: 100px; font-size: 9px; line-height: 1.45; }
+  .platforms-note { font-size: 10px; }
+  .contact-main .eyebrow { font-size: 10px; }
+  .contact-description { font-size: 14px; }
+  .contact-stamp small { font-size: 7px; letter-spacing: .1em; }
+  .footer-top, .floating-channels { font-size: 9px; }
+  .floating-channels { min-height: 40px; }
+  .floating-whatsapp-label { font-size: 10px; }
+  .floating-whatsapp-label i { font-size: 9px; }
+}
+
+@media (max-width: 380px) {
+  .hero-topline { font-size: 8px; }
+  .wordmark-name { font-size: 9px; }
+  .floating-channels { min-height: 40px; padding: 0 9px; }
+  .floating-whatsapp-label i { font-size: 8px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .motion-ready [data-reveal]:not(.is-visible) { opacity: 1; transform: none; }
+}
+
+
+/* Ajustes de composição para o novo par tipográfico */
+@media (min-width: 981px) {
+  .hero h1 { font-size: clamp(4.4rem, 8vw, 8.4rem); }
+  .platforms-intro h2 { font-size: clamp(4.3rem, 7.6vw, 7.2rem); }
+  .contact-main h2 { font-size: clamp(4.3rem, 7.5vw, 7.6rem); }
+}
+
+@media (min-width: 721px) and (max-width: 980px) {
+  .hero h1 { font-size: clamp(4.4rem, 8vw, 7.6rem); }
+  .platforms-intro h2 { font-size: clamp(4.1rem, 7.4vw, 6rem); }
+  .contact-main h2 { font-size: clamp(4.1rem, 7.2vw, 6rem); }
+}
+
+@media (max-width: 720px) {
+  .hero h1 { font-size: clamp(3.65rem, 14.8vw, 6.4rem); }
+  .essence-layout { grid-template-columns: minmax(0, 1fr); min-width: 0; }
+  .essence-heading, .essence-copy { min-width: 0; }
+  .essence-heading h2 { font-size: clamp(3.7rem, 12.8vw, 5.6rem); line-height: .9; }
+  .essence-heading h2 em { margin-left: .22em; }
+  .essence-copy { width: calc(100% - clamp(1.5rem, 10vw, 2rem)); max-width: 410px; min-width: 0; margin-left: clamp(1.5rem, 10vw, 2rem); padding-left: 20px; }
+  .gallery-intro { grid-template-columns: minmax(0, 1fr); }
+  .gallery-intro h2 { font-size: clamp(3.3rem, 12vw, 5.4rem); line-height: .92; letter-spacing: -.035em; }
+  .experience-content h2 { font-size: clamp(3.6rem, 13.5vw, 5.8rem); line-height: .9; }
+  .experience-content h2 em { padding-left: .2em; }
+  .platforms-intro h2 { font-size: clamp(3.4rem, 12vw, 5rem); line-height: .92; }
+  .contact-main h2 { font-size: clamp(3.5rem, 13vw, 5.4rem); line-height: .92; }
+  .contact-stamp { display: none; }
+}
+
+
+@media (min-width: 721px) {
+  .hero-scroll { left: clamp(130px, calc(var(--space) + 90px), 220px); }
 }

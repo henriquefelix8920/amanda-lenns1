@@ -53,8 +53,12 @@ function useScrollReveals() {
   useEffect(() => {
     document.documentElement.classList.add("motion-ready");
     const items = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
+    const headings = Array.from(document.querySelectorAll<HTMLElement>(
+      ".hero h1, .essence-heading h2, .gallery-intro h2, .experience-content h2, .platforms-intro h2, .contact-main h2",
+    ));
     if (!("IntersectionObserver" in window)) {
       items.forEach((item) => item.classList.add("is-visible"));
+      headings.forEach((heading) => heading.classList.add("is-in-view"));
       return () => document.documentElement.classList.remove("motion-ready");
     }
 
@@ -69,9 +73,19 @@ function useScrollReveals() {
       },
       { threshold: 0.12, rootMargin: "0px 0px -36px 0px" },
     );
+    const headingObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          entry.target.classList.toggle("is-in-view", entry.isIntersecting);
+        });
+      },
+      { threshold: 0.05, rootMargin: "40px 0px" },
+    );
     items.forEach((item) => observer.observe(item));
+    headings.forEach((heading) => headingObserver.observe(heading));
     return () => {
       observer.disconnect();
+      headingObserver.disconnect();
       document.documentElement.classList.remove("motion-ready");
     };
   }, []);
