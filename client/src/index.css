@@ -70,7 +70,7 @@
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 76px; background: var(--ink); }
-body { margin: 0; min-width: 320px; background: var(--ink); color: var(--paper); font-family: var(--sans); font-size: 14px; font-weight: 400; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+body { margin: 0; background: var(--ink); color: var(--paper); font-family: var(--sans); font-size: 14px; font-weight: 400; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
 body, button, a { -webkit-tap-highlight-color: transparent; }
 body::selection { background: var(--wine); color: var(--paper); }
 button, a { color: inherit; font: inherit; }
@@ -269,14 +269,13 @@ main { display: block; }
 .floating-channels > .arrow-mark { width: 12px; height: 12px; color: var(--gold); }
 .floating-channels:hover > .arrow-mark { color: var(--ink); }
 .floating-channels-orbit { position: absolute; inset: -5px; border: 1px solid rgba(212, 175, 55, .13); transform: translateZ(-12px); }
-.floating-whatsapp { right: max(26px, env(safe-area-inset-right)); gap: 11px; min-height: 58px; padding: 5px 18px 5px 6px; border: 1px solid rgba(212, 175, 55, .7); border-radius: 40px; background: rgba(8, 7, 7, .94); color: var(--paper); box-shadow: 0 12px 36px rgba(0, 0, 0, .46), 0 0 28px rgba(124, 10, 1, .18); animation: whatsapp-float 7.5s ease-in-out infinite; }
+.floating-whatsapp { right: max(26px, env(safe-area-inset-right)); gap: 11px; min-height: 58px; padding: 5px 18px 5px 6px; border: 1px solid rgba(212, 175, 55, .7); border-radius: 40px; background: rgba(8, 7, 7, .94); color: var(--paper); box-shadow: 0 12px 36px rgba(0, 0, 0, .46), 0 0 28px rgba(124, 10, 1, .18); }
 .floating-whatsapp:disabled { opacity: 1; }
 .floating-whatsapp-face { position: relative; display: grid; width: 44px; height: 44px; place-items: center; border: 1px solid rgba(212, 175, 55, .42); border-radius: 50%; background: radial-gradient(circle at 36% 27%, #361612, #110b0a 72%); box-shadow: inset 0 0 12px rgba(212, 175, 55, .13), 0 4px 12px rgba(0, 0, 0, .5); transform: translateZ(8px); }
 .floating-whatsapp-face .whatsapp-mark { width: 23px; height: 23px; fill: none; stroke: var(--gold); stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.35; }
 .floating-whatsapp-label { display: grid; gap: 3px; color: var(--paper); font-size: 9px; font-weight: 600; letter-spacing: .06em; text-align: left; }
 .floating-whatsapp-label i { color: rgba(242, 237, 228, .52); font-size: 7px; font-style: normal; font-weight: 400; }
 .floating-whatsapp-halo { position: absolute; inset: -5px; border: 1px solid rgba(212, 175, 55, .15); border-radius: 40px; transform: translateZ(-12px); }
-.floating-whatsapp:hover { animation-play-state: paused; transform: perspective(850px) rotateY(-9deg) rotateX(6deg) translateY(-4px) translateZ(8px); }
 
 [data-reveal] { opacity: 1; transform: none; }
 .motion-ready [data-reveal] { transition: opacity .7s ease, transform .8s cubic-bezier(.2, .7, .2, 1); }
@@ -286,8 +285,6 @@ main { display: block; }
 
 @keyframes film-drift { from { transform: scale(1.02) translate3d(0, 0, 0); } to { transform: scale(1.08) translate3d(-.5%, .5%, 0); } }
 @keyframes scroll-glide { 0%, 100% { transform: translateX(0); opacity: .45; } 50% { transform: translateX(19px); opacity: 1; } }
-@keyframes whatsapp-float { 0%, 8%, 100% { transform: perspective(850px) rotateY(-5deg) rotateX(2deg) translateY(0) translateZ(0); } 2.5% { transform: perspective(850px) rotateY(-8deg) rotateX(5deg) translateY(-4px) translateZ(5px); } 5% { transform: perspective(850px) rotateY(-3deg) rotateX(0) translateY(0) translateZ(1px); } }
-
 @media (max-width: 980px) {
   .hero-content { width: min(720px, 80%); }
   .hero-signature { right: 6%; width: clamp(130px, 19vw, 205px); opacity: .74; }
@@ -308,8 +305,8 @@ main { display: block; }
   .menu-glyph i { display: block; height: 1px; background: var(--gold); transition: transform .2s ease; }
   .menu-glyph--open i:first-child { transform: translateY(3px) rotate(45deg); }
   .menu-glyph--open i:last-child { transform: translateY(-3px) rotate(-45deg); }
-  .primary-navigation { position: absolute; top: 68px; right: 0; left: 0; display: flex; flex-direction: column; align-items: stretch; gap: 0; max-height: 0; padding: 0 var(--space); overflow: hidden; border-bottom: 1px solid transparent; background: rgba(7, 6, 6, .98); opacity: 0; transition: max-height .34s ease, opacity .25s ease, padding .34s ease, border-color .25s ease; }
-  .primary-navigation--open { max-height: 330px; padding-top: 8px; padding-bottom: 17px; border-bottom-color: rgba(212, 175, 55, .23); opacity: 1; }
+  .primary-navigation { position: absolute; top: 68px; right: 0; left: 0; display: flex; flex-direction: column; align-items: stretch; gap: 0; max-height: 0; padding: 0 var(--space); overflow: hidden; border-bottom: 1px solid transparent; background: rgba(7, 6, 6, .98); opacity: 0; visibility: hidden; transition: max-height .34s ease, opacity .25s ease, padding .34s ease, border-color .25s ease, visibility 0s linear .34s; }
+  .primary-navigation--open { max-height: 330px; padding-top: 8px; padding-bottom: 17px; border-bottom-color: rgba(212, 175, 55, .23); opacity: 1; visibility: visible; transition: max-height .34s ease, opacity .25s ease, padding .34s ease, border-color .25s ease, visibility 0s; }
   .primary-navigation a { padding: 16px 2px; border-bottom: 1px solid rgba(242, 237, 228, .1); font-size: 9px; }
   .primary-navigation a::after { display: none; }
   .primary-navigation .nav-contact { justify-content: space-between; margin-top: 12px; padding: 13px; border: 1px solid rgba(212, 175, 55, .45); }
@@ -391,7 +388,6 @@ main { display: block; }
 }
 
 @media (max-width: 380px) {
-  .hero h1 { font-size: clamp(3.55rem, 15vw, 4.2rem); }
   .hero-signature { right: 5%; bottom: 15%; width: 95px; }
   .gallery-composition { grid-template-rows: 104vw 55vw 58vw; gap: 9px; }
   .channel-row { grid-template-columns: 19px minmax(0, 1fr) 75px 20px; gap: 6px; }
@@ -399,46 +395,7 @@ main { display: block; }
   .floating-whatsapp { gap: 7px; min-height: 46px; padding-right: 9px; }
   .floating-whatsapp-face { width: 36px; height: 36px; }
   .floating-whatsapp-label { font-size: 7px; }
-  .floating-channels { min-height: 34px; padding: 0 8px; font-size: 6px; }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  @keyframes title-levitation {
-    0%, 100% { transform: translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg); }
-    36% { transform: translate3d(0, -16px, 36px) rotateX(1.25deg) rotateY(-.9deg); }
-    68% { transform: translate3d(0, -3px, 8px) rotateX(-.45deg) rotateY(.5deg); }
-  }
-
-  .hero-content,
-  .essence-heading,
-  .gallery-intro,
-  .experience-content,
-  .platforms-intro,
-  .contact-main { perspective: 950px; }
-
-  .hero h1,
-  .essence-heading h2,
-  .gallery-intro h2,
-  .experience-content h2,
-  .platforms-intro h2,
-  .contact-main h2 {
-    animation: title-levitation 8.4s cubic-bezier(.45, .05, .55, .95) infinite;
-    transform-origin: 50% 58%;
-    transform-style: preserve-3d;
-  }
-
-  .essence-heading h2 { animation-delay: -2.4s; }
-  .gallery-intro h2 { animation-delay: -4.1s; }
-  .experience-content h2 { animation-delay: -1.6s; }
-  .platforms-intro h2 { animation-delay: -5.2s; }
-  .contact-main h2 { animation-delay: -3.3s; }
-
-  .motion-ready .hero h1:not(.is-in-view),
-  .motion-ready .essence-heading h2:not(.is-in-view),
-  .motion-ready .gallery-intro h2:not(.is-in-view),
-  .motion-ready .experience-content h2:not(.is-in-view),
-  .motion-ready .platforms-intro h2:not(.is-in-view),
-  .motion-ready .contact-main h2:not(.is-in-view) { animation-play-state: paused; }
+  .floating-channels { min-height: 44px; padding: 0 8px; font-size: 8px; }
 }
 
 /* Escala editorial e legibilidade */
@@ -491,8 +448,9 @@ body { font-size: 16px; line-height: 1.65; }
 
 @media (max-width: 380px) {
   .hero-topline { font-size: 8px; }
+  .hero h1 { font-size: clamp(3.2rem, 14.4vw, 3.8rem); }
   .wordmark-name { font-size: 9px; }
-  .floating-channels { min-height: 40px; padding: 0 9px; }
+  .floating-channels { min-height: 44px; padding: 0 9px; }
   .floating-whatsapp-label i { font-size: 8px; }
 }
 
@@ -516,7 +474,7 @@ body { font-size: 16px; line-height: 1.65; }
 }
 
 @media (max-width: 720px) {
-  .hero h1 { font-size: clamp(3.65rem, 14.8vw, 6.4rem); }
+  .hero h1 { font-size: clamp(3.6rem, 14.6vw, 6.4rem); }
   .essence-layout { grid-template-columns: minmax(0, 1fr); min-width: 0; }
   .essence-heading, .essence-copy { min-width: 0; }
   .essence-heading h2 { font-size: clamp(3.7rem, 12.8vw, 5.6rem); line-height: .9; }
@@ -534,4 +492,113 @@ body { font-size: 16px; line-height: 1.65; }
 
 @media (min-width: 721px) {
   .hero-scroll { left: clamp(130px, calc(var(--space) + 90px), 220px); }
+}
+
+@media (max-width: 380px) {
+  .hero h1 { font-size: clamp(2.9rem, 14vw, 3.7rem); }
+}
+
+
+/* Carrossel fotográfico tridimensional */
+.photo-carousel { position: relative; margin: clamp(1.5rem, 4vw, 3rem) auto 0; padding-bottom: 1rem; }
+.photo-carousel-stage { --carousel-radius: clamp(180px, 29vw, 420px); position: relative; display: grid; width: min(100%, 1180px); height: clamp(480px, 58vw, 720px); place-items: center; margin: 0 auto; overflow: visible; perspective: 1500px; perspective-origin: center 48%; }
+.photo-carousel-track { position: absolute; inset: 0; transform: rotateY(var(--track-angle, 0deg)); transform-style: preserve-3d; transition: transform 1.35s cubic-bezier(.18, .68, .18, 1); }
+.carousel-photo { position: absolute; top: 50%; left: 50%; display: block; width: clamp(230px, 31vw, 390px); height: min(76%, 560px); min-height: 350px; padding: 0; overflow: hidden; border: 1px solid rgba(237, 203, 105, .72); background: #100c0a; box-shadow: 0 28px 70px rgba(0, 0, 0, .55), 0 0 34px rgba(212, 175, 55, .13); color: var(--paper); text-align: left; transform: translate(-50%, -50%) rotateY(var(--card-angle)) translateZ(var(--carousel-radius)); transform-style: preserve-3d; backface-visibility: hidden; }
+.carousel-photo:focus-visible { z-index: 2; outline-offset: 6px; }
+.carousel-photo img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.88) contrast(1.03); transition: filter .8s ease, transform 1.2s cubic-bezier(.2, .65, .2, 1); }
+.carousel-photo:hover img, .carousel-photo[aria-pressed="true"] img { filter: saturate(1) contrast(1.04); transform: scale(1.025); }
+.carousel-photo:nth-child(1) img { object-position: center 35%; }
+.carousel-photo:nth-child(2) img { object-position: center 40%; }
+.carousel-photo:nth-child(3) img { object-position: center 38%; }
+.carousel-photo:nth-child(4) img { object-position: center 35%; }
+.carousel-photo-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(5, 5, 5, .04) 45%, rgba(5, 5, 5, .76)); pointer-events: none; }
+.carousel-photo-index, .carousel-photo-caption { position: absolute; z-index: 1; bottom: 24px; color: #f7e7b1; font-size: 9px; letter-spacing: .2em; text-transform: uppercase; text-shadow: 0 2px 15px #000; }
+.carousel-photo-index { left: 22px; font-family: var(--serif); font-size: 19px; letter-spacing: .05em; }
+.carousel-photo-caption { right: 22px; color: rgba(255, 248, 228, .82); font-size: 8px; }
+.carousel-photo--unavailable { display: grid; place-items: center; background: radial-gradient(circle at 50% 43%, rgba(212, 175, 55, .2), transparent 35%), linear-gradient(145deg, #24100e, #090707 70%); }
+.carousel-empty-mark { color: rgba(212, 175, 55, .78); font-family: var(--serif); font-size: 5rem; letter-spacing: -.12em; }
+.carousel-light-arc { position: absolute; z-index: -1; width: 68%; height: 56%; border: 1px solid rgba(219, 184, 86, .14); border-radius: 50%; transform: rotateX(71deg) rotateZ(-12deg); box-shadow: 0 0 50px rgba(164, 96, 32, .08); pointer-events: none; }
+.carousel-light-arc--two { width: 54%; height: 45%; border-color: rgba(242, 237, 228, .1); transform: rotateX(72deg) rotateZ(18deg); }
+.carousel-controls { display: flex; align-items: center; justify-content: center; gap: clamp(18px, 3vw, 40px); max-width: 650px; margin: -1.8rem auto 0; }
+.carousel-arrow { display: grid; width: 42px; height: 42px; flex: 0 0 auto; place-items: center; border: 1px solid rgba(212, 175, 55, .45); border-radius: 50%; background: rgba(6, 5, 5, .76); color: var(--gold); font-size: 19px; transition: background .3s ease, color .3s ease, transform .3s ease; }
+.carousel-arrow:hover { transform: translateY(-2px); background: var(--gold); color: var(--ink); }
+.carousel-pagination { display: flex; align-items: center; gap: 9px; }
+.carousel-dot { width: 7px; height: 7px; padding: 0; border: 1px solid rgba(212, 175, 55, .6); border-radius: 50%; background: transparent; transition: width .35s ease, border-radius .35s ease, background .35s ease; }
+.carousel-dot--active { width: 28px; border-radius: 10px; background: var(--gold); }
+.carousel-count { min-width: 58px; color: var(--gold); font-family: var(--serif); font-size: 16px; }
+.carousel-count i { color: rgba(242, 237, 228, .42); font-size: 10px; font-style: normal; }
+
+/* Órbita de plataformas e formatos de conteúdo */
+.brand-showcase { position: relative; min-width: 0; padding: 1rem 0; }
+.brand-stage { --brand-radius: clamp(190px, 21vw, 285px); position: relative; display: grid; width: min(100%, 780px); height: 390px; place-items: center; margin: 0 auto; perspective: 1200px; perspective-origin: center 48%; }
+.brand-stage-glow { position: absolute; width: 68%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(207, 159, 63, .16), rgba(125, 56, 32, .07) 42%, transparent 70%); filter: blur(9px); }
+.brand-orbit { position: absolute; inset: 0; margin: 0; padding: 0; list-style: none; transform-style: preserve-3d; animation: brand-orbit-turn 32s linear infinite; }
+.brand-showcase:hover .brand-orbit, .brand-showcase:focus-within .brand-orbit { animation-play-state: paused; }
+.brand-orbit-card { position: absolute; top: 50%; left: 50%; width: clamp(172px, 20vw, 224px); height: 172px; margin: 0; transform: translate(-50%, -50%) rotateY(var(--brand-angle)) translateZ(var(--brand-radius)); transform-style: preserve-3d; backface-visibility: hidden; }
+.brand-card { display: grid; width: 100%; height: 100%; align-content: center; justify-items: center; gap: 9px; border: 1px solid rgba(137, 93, 48, .28); background: linear-gradient(145deg, rgba(255, 255, 255, .94), rgba(249, 243, 230, .86)); box-shadow: 0 18px 46px rgba(31, 20, 13, .22), inset 0 0 32px rgba(255, 255, 255, .62); color: #211714; text-align: center; backdrop-filter: blur(10px); }
+.brand-icon { display: grid; width: 47px; height: 47px; place-items: center; }
+.channel-mark { display: block; width: 45px; height: 45px; }
+.channel-mark--privacy { color: #f27645; filter: drop-shadow(0 3px 8px rgba(242, 118, 69, .2)); }
+.channel-mark--media { color: #98713a; }
+.onlyfans-mark { color: #00a9df; font-family: Arial, sans-serif; font-size: 35px; font-weight: 800; letter-spacing: -.12em; line-height: 1; }
+.brand-name { font-family: var(--serif); font-size: 21px; letter-spacing: -.02em; }
+.brand-orbit-card--instagram .brand-name { font-family: var(--sans); font-size: 18px; font-weight: 600; }
+.brand-orbit-card--onlyfans .brand-name { color: #008fc2; font-family: Arial, sans-serif; font-weight: 700; }
+.brand-descriptor { color: rgba(33, 23, 20, .59); font-size: 8px; letter-spacing: .14em; text-transform: uppercase; }
+.brand-orbit-ring { position: absolute; width: min(78%, 610px); height: 43%; border: 1px solid rgba(143, 101, 51, .19); border-radius: 50%; transform: rotateX(68deg) rotateZ(-8deg); pointer-events: none; }
+
+/* Botão de contato dourado e ícone flutuante */
+.contact-placeholder { position: relative; isolation: isolate; overflow: hidden; border-color: rgba(227, 193, 105, .84); background: linear-gradient(110deg, rgba(66, 40, 11, .62), rgba(13, 10, 6, .96) 47%, rgba(87, 56, 16, .54)); box-shadow: 0 0 20px rgba(212, 175, 55, .2), inset 0 0 20px rgba(212, 175, 55, .08); animation: contact-gold-float 4.8s ease-in-out infinite, contact-gold-glow 2.6s ease-in-out infinite; }
+.contact-placeholder::after { position: absolute; z-index: -1; top: -40%; bottom: -40%; left: -45%; width: 32%; background: linear-gradient(90deg, transparent, rgba(255, 238, 176, .4), transparent); content: ''; transform: skewX(-22deg); animation: gold-sheen 4.6s ease-in-out infinite; }
+.contact-placeholder:disabled { opacity: 1; }
+.contact-placeholder > .whatsapp-mark { position: relative; z-index: 1; width: 29px; height: 29px; filter: drop-shadow(0 0 9px rgba(230, 192, 80, .58)); }
+.contact-placeholder b, .contact-placeholder small, .placeholder-arrow { position: relative; z-index: 1; }
+.contact-placeholder b { color: #f2d584; }
+.contact-placeholder small { color: rgba(255, 239, 193, .75); }
+.placeholder-arrow { border-color: rgba(233, 199, 111, .52); background: rgba(212, 175, 55, .08); }
+.floating-whatsapp { width: 66px; height: 66px; min-height: 66px; padding: 0; overflow: visible; border: 1px solid rgba(244, 213, 130, .95); border-radius: 50%; background: radial-gradient(circle at 34% 25%, #4a3511, #100c07 73%); box-shadow: 0 0 15px rgba(212, 175, 55, .47), 0 0 38px rgba(212, 175, 55, .28), 0 12px 38px rgba(0, 0, 0, .56); animation: whatsapp-gold-dance 2.8s ease-in-out infinite, whatsapp-gold-glow 1.8s ease-in-out infinite; }
+.floating-whatsapp:disabled { opacity: 1; }
+.floating-whatsapp::before { position: absolute; inset: -8px; border: 1px solid rgba(242, 211, 126, .42); border-radius: 50%; content: ''; animation: whatsapp-gold-ring 2.3s ease-out infinite; }
+.floating-whatsapp::after { position: absolute; inset: 2px; border-radius: 50%; background: linear-gradient(120deg, transparent 27%, rgba(255, 239, 179, .38) 49%, transparent 66%); content: ''; pointer-events: none; transform: translateX(-110%) rotate(20deg); animation: whatsapp-gold-sweep 3.2s ease-in-out infinite; }
+.floating-whatsapp-face { z-index: 1; display: grid; width: 44px; height: 44px; place-items: center; border: 0; border-radius: 0; background: transparent; box-shadow: none; animation: whatsapp-mark-motion 2.3s ease-in-out infinite; }
+.floating-whatsapp-face .whatsapp-mark { width: 31px; height: 31px; stroke: #f0cd6d; stroke-width: 1.75; filter: drop-shadow(0 0 5px rgba(255, 224, 137, .86)); }
+
+@keyframes brand-orbit-turn { from { transform: rotateY(0deg); } to { transform: rotateY(360deg); } }
+@keyframes contact-gold-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+@keyframes contact-gold-glow { 0%, 100% { box-shadow: 0 0 15px rgba(212, 175, 55, .18), inset 0 0 15px rgba(212, 175, 55, .06); } 50% { box-shadow: 0 0 32px rgba(244, 207, 100, .5), 0 0 70px rgba(212, 175, 55, .18), inset 0 0 24px rgba(212, 175, 55, .15); } }
+@keyframes gold-sheen { 0%, 28% { left: -45%; } 65%, 100% { left: 130%; } }
+@keyframes whatsapp-gold-dance { 0%, 100% { transform: translate3d(0, 0, 0) rotate(0) scale(1); } 16% { transform: translate3d(-3px, -8px, 0) rotate(-13deg) scale(1.06); } 32% { transform: translate3d(3px, -2px, 0) rotate(11deg) scale(.98); } 48% { transform: translate3d(-2px, -10px, 0) rotate(-9deg) scale(1.07); } 66% { transform: translate3d(3px, -3px, 0) rotate(8deg) scale(1); } 82% { transform: translate3d(-1px, -7px, 0) rotate(-5deg) scale(1.04); } }
+@keyframes whatsapp-gold-glow { 0%, 100% { box-shadow: 0 0 14px rgba(212, 175, 55, .4), 0 0 30px rgba(212, 175, 55, .2), 0 12px 38px rgba(0, 0, 0, .56); } 50% { box-shadow: 0 0 28px rgba(255, 223, 129, .88), 0 0 62px rgba(212, 175, 55, .54), 0 12px 38px rgba(0, 0, 0, .5); } }
+@keyframes whatsapp-gold-ring { 0%, 100% { opacity: .25; transform: scale(.92); } 50% { opacity: .9; transform: scale(1.13); } }
+@keyframes whatsapp-gold-sweep { 0%, 28% { transform: translateX(-115%) rotate(20deg); } 62%, 100% { transform: translateX(115%) rotate(20deg); } }
+@keyframes whatsapp-mark-motion { 0%, 100% { transform: translateZ(8px) rotate(0); } 50% { transform: translateZ(8px) rotate(-13deg) scale(1.06); } }
+@keyframes whatsapp-halo-turn { from { transform: rotate(0deg) translateZ(-12px); } to { transform: rotate(360deg) translateZ(-12px); } }
+
+@media (max-width: 720px) {
+  .photo-carousel-stage { --carousel-radius: clamp(158px, 48vw, 218px); height: 450px; perspective: 1100px; }
+  .carousel-photo { width: clamp(184px, 54vw, 245px); height: min(74%, 350px); min-height: 318px; }
+  .carousel-controls { margin-top: -1rem; gap: clamp(15px, 5vw, 26px); }
+  .carousel-arrow { width: 38px; height: 38px; }
+  .carousel-count { min-width: 48px; font-size: 14px; }
+  .brand-stage { --brand-radius: clamp(150px, 48vw, 205px); height: 320px; perspective: 950px; }
+  .brand-orbit-card { width: clamp(148px, 46vw, 184px); height: 158px; }
+  .brand-name { font-size: 18px; }
+  .brand-descriptor { font-size: 7px; }
+  .contact-placeholder { width: min(100%, 365px); min-height: 72px; }
+.floating-whatsapp { right: max(18px, env(safe-area-inset-right)); bottom: max(20px, env(safe-area-inset-bottom)); width: 62px; height: 62px; min-height: 62px; padding: 0; }
+.floating-whatsapp-face { width: 51px; height: 51px; }
+}
+
+@media (max-width: 380px) {
+  .photo-carousel-stage { --carousel-radius: 156px; height: 415px; }
+  .carousel-photo { width: 184px; min-height: 300px; }
+  .carousel-photo-index { bottom: 18px; left: 16px; }
+  .carousel-photo-caption { right: 14px; bottom: 21px; font-size: 7px; }
+  .brand-stage { --brand-radius: 150px; height: 290px; }
+  .brand-orbit-card { width: 148px; height: 148px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .photo-carousel-track { transition-duration: .01ms; }
+  .brand-orbit, .contact-placeholder, .contact-placeholder::after, .floating-whatsapp, .floating-whatsapp::before, .floating-whatsapp::after, .floating-whatsapp-face { animation: none !important; }
 }

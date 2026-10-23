@@ -1,11 +1,15 @@
 # Mídia de Amanda Lenns
 
-Adicione nesta pasta os arquivos autorizados para publicação. Os nomes e extensões são usados diretamente pelo site:
+## Arquivos publicados
 
-- `video2.mp4` — fundo do hero.
-- `video1.mp4` — fundo da seção “Experiência”.
-- `imagem1.jpg`, `imagem2.jpg`, `imagem3.jpg` e `imagem4.jpg` — galeria editorial.
+As cópias de entrega ficam em `client/public/media/` e são usadas diretamente pelo site:
 
-O site detecta quando cada arquivo está disponível e mantém o fallback cinematográfico enquanto o arquivo estiver ausente. O segundo retrato também aceita `imagem2jpg` (sem ponto antes de `jpg`) por compatibilidade com o nome informado no briefing; prefira `imagem2.jpg`.
+- `video2.mp4` — fundo do hero, carregado de imediato, mudo e pausado quando sai da tela ou a aba fica oculta.
+- `video1.mp4` — fundo da seção Presença, carregado quando a seção se aproxima da viewport, mudo e pausado fora de vista.
+- `imagem1.webp` a `imagem4.webp` — galeria editorial; carregamento adiado até as imagens se aproximarem da viewport.
 
-Use somente arquivos com autorização de publicação. Recomenda-se exportar os vídeos sem áudio, em MP4/H.264, com resolução e tamanho otimizados para a web. As imagens devem manter a orientação e proporção originais; o site usa `object-fit` sem deformar o conteúdo.
+Os dois vídeos publicados são H.264, sem faixa de áudio e com `faststart`. As imagens publicadas mantêm as proporções dos retratos; as três imagens originais maiores foram redimensionadas proporcionalmente para até 1.600 px de altura antes da conversão para WebP.
+
+## Arquivos-mestre
+
+Os originais fornecidos estão preservados em `docs/media-originals/`; não são baixados pelo site. Se as versões públicas precisarem ser refeitas, use os mestres e mantenha as extensões e os nomes que estão nessa pasta. Publique apenas mídias com autorização. Caso uma cópia de entrega esteja ausente, a página mantém seu tratamento visual de fallback.

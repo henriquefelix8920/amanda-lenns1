@@ -34,7 +34,7 @@ A pasta publicada pelo Vite é `dist/public`. O arquivo `vercel.json` especifica
 
 ### Mídias autorizadas
 
-Adicione as fotos e os vídeos fornecidos pela profissional em `client/public/media/`: `imagem1.jpg`, `imagem2.jpg`, `imagem3.jpg`, `imagem4.jpg`, `video2.mp4` (fundo do hero) e `video1.mp4` (fundo da seção Experiência). O nome de imagem `imagem2jpg`, sem ponto antes de `jpg`, também é aceito por compatibilidade; `imagem2.jpg` é recomendado. A página mantém composições abstratas próprias enquanto os arquivos ainda não estiverem presentes. Consulte `docs/media-assets.md` para detalhes.
+Os arquivos-mestre fornecidos são preservados em `docs/media-originals/`. A versão publicada usa cópias otimizadas em `client/public/media/`: quatro imagens WebP (`imagem1.webp` a `imagem4.webp`) e dois vídeos MP4 sem áudio (`video2.mp4` no hero e `video1.mp4` na seção Presença). O vídeo da seção carrega quando se aproxima da tela; ambos pausam fora de vista e quando a aba fica oculta. Consulte `docs/media-assets.md` para detalhes.
 
 ### Canais oficiais
 
