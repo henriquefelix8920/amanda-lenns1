@@ -1,0 +1,6 @@
+# TODO — reestruturação de Amanda Lenns
+
+- [x] **Reestruturar conforme “cinematic-web-studio” e preservar reversibilidade.** A solicitação “use a habilidade cinematic-web-studio e reestruture esse site: https://github.com/henriquefelix8920/amanda-lenns1” foi atendida numa branch separada; originais mantidos, `main` intacta e site não publicado. A mudança pode ser revertida sem substituir a versão anterior.
+- [x] **Entregar a experiência editorial em português do Brasil.** A página encadeia abertura, essência, retratos, presença, canais e contato; cada CTA aponta para uma seção existente. Não foram inventados perfis, links de contato ou formulários.
+- [x] **Conservar usabilidade e conteúdo em diferentes condições.** Composição conferida a 390 px; menu móvel, galeria e estados finais revisados; lightbox abre por toque/clique e fecha com Escape; foco visível e `prefers-reduced-motion` são respeitados. As fotos mantêm suas versões originais; os vídeos existentes não foram usados por exibirem marcas d’água.
+- [x] **Validar a implementação.** TypeScript, 6 testes, build, Prettier e `git diff --check` passaram. O desktop e as cenas mobile foram inspecionados no preview local; as larguras de documento e viewport coincidem em 390 px. O vínculo WebDev não estava disponível nesta sessão, portanto não houve publicação do site.
